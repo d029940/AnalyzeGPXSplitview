@@ -1,0 +1,372 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		639E839C23C511E70048666A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E839B23C511E70048666A /* AppDelegate.swift */; };
+		639E839E23C511E70048666A /* GpxContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E839D23C511E70048666A /* GpxContentViewController.swift */; };
+		639E83A023C511EA0048666A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 639E839F23C511EA0048666A /* Assets.xcassets */; };
+		639E83A323C511EA0048666A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639E83A123C511EA0048666A /* Main.storyboard */; };
+		639E83AC23C512600048666A /* GarminGpx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E83AB23C512600048666A /* GarminGpx.swift */; };
+		63DDBDB023D8D0F6001FDB0B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DDBDAF23D8D0F6001FDB0B /* MainViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		639E839823C511E70048666A /* AnalyzeGPX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnalyzeGPX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		639E839B23C511E70048666A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		639E839D23C511E70048666A /* GpxContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpxContentViewController.swift; sourceTree = "<group>"; };
+		639E839F23C511EA0048666A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		639E83A223C511EA0048666A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		639E83A423C511EA0048666A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		639E83A523C511EA0048666A /* AnalyzeGPX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnalyzeGPX.entitlements; sourceTree = "<group>"; };
+		639E83AB23C512600048666A /* GarminGpx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarminGpx.swift; sourceTree = "<group>"; };
+		63DDBDAF23D8D0F6001FDB0B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		639E839523C511E70048666A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		639E838F23C511E70048666A = {
+			isa = PBXGroup;
+			children = (
+				639E839A23C511E70048666A /* AnalyzeGPX */,
+				639E839923C511E70048666A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		639E839923C511E70048666A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				639E839823C511E70048666A /* AnalyzeGPX.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		639E839A23C511E70048666A /* AnalyzeGPX */ = {
+			isa = PBXGroup;
+			children = (
+				63DDBDB123D8D130001FDB0B /* Model */,
+				63DDBDB323D8D17B001FDB0B /* Views */,
+				63DDBDB223D8D14E001FDB0B /* Controllers */,
+				63DDBDB423D8D18A001FDB0B /* Supporting files */,
+				639E839F23C511EA0048666A /* Assets.xcassets */,
+			);
+			path = AnalyzeGPX;
+			sourceTree = "<group>";
+		};
+		63DDBDB123D8D130001FDB0B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				639E83AB23C512600048666A /* GarminGpx.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		63DDBDB223D8D14E001FDB0B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				639E839D23C511E70048666A /* GpxContentViewController.swift */,
+				63DDBDAF23D8D0F6001FDB0B /* MainViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		63DDBDB323D8D17B001FDB0B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				639E83A123C511EA0048666A /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		63DDBDB423D8D18A001FDB0B /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				639E83A423C511EA0048666A /* Info.plist */,
+				639E83A523C511EA0048666A /* AnalyzeGPX.entitlements */,
+				639E839B23C511E70048666A /* AppDelegate.swift */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		639E839723C511E70048666A /* AnalyzeGPX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 639E83A823C511EA0048666A /* Build configuration list for PBXNativeTarget "AnalyzeGPX" */;
+			buildPhases = (
+				639E839423C511E70048666A /* Sources */,
+				639E839523C511E70048666A /* Frameworks */,
+				639E839623C511E70048666A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AnalyzeGPX;
+			productName = AnalyzeGPX;
+			productReference = 639E839823C511E70048666A /* AnalyzeGPX.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		639E839023C511E70048666A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Manfred Kern";
+				TargetAttributes = {
+					639E839723C511E70048666A = {
+						CreatedOnToolsVersion = 11.3;
+					};
+				};
+			};
+			buildConfigurationList = 639E839323C511E70048666A /* Build configuration list for PBXProject "AnalyzeGPX" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 639E838F23C511E70048666A;
+			productRefGroup = 639E839923C511E70048666A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				639E839723C511E70048666A /* AnalyzeGPX */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		639E839623C511E70048666A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				639E83A023C511EA0048666A /* Assets.xcassets in Resources */,
+				639E83A323C511EA0048666A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		639E839423C511E70048666A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				639E839E23C511E70048666A /* GpxContentViewController.swift in Sources */,
+				639E83AC23C512600048666A /* GarminGpx.swift in Sources */,
+				639E839C23C511E70048666A /* AppDelegate.swift in Sources */,
+				63DDBDB023D8D0F6001FDB0B /* MainViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		639E83A123C511EA0048666A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				639E83A223C511EA0048666A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		639E83A623C511EA0048666A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		639E83A723C511EA0048666A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		639E83A923C511EA0048666A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "AnalyzeGPX/Supporting files/AnalyzeGPX.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FJ86JFVDS2;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "AnalyzeGPX/Supporting files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = private.AnalyzeGPX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		639E83AA23C511EA0048666A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "AnalyzeGPX/Supporting files/AnalyzeGPX.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FJ86JFVDS2;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "AnalyzeGPX/Supporting files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = private.AnalyzeGPX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		639E839323C511E70048666A /* Build configuration list for PBXProject "AnalyzeGPX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				639E83A623C511EA0048666A /* Debug */,
+				639E83A723C511EA0048666A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		639E83A823C511EA0048666A /* Build configuration list for PBXNativeTarget "AnalyzeGPX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				639E83A923C511EA0048666A /* Debug */,
+				639E83AA23C511EA0048666A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 639E839023C511E70048666A /* Project object */;
+}
