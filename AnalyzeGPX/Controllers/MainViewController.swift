@@ -12,9 +12,6 @@ class MainViewController: NSViewController {
 
     var tabView: NSTabView!
     
-    // MARK:- Model
-    let garminGpx = GarminGpx()
-    
     // MARK: Start up
     
     override func viewDidLoad() {
@@ -37,9 +34,6 @@ class MainViewController: NSViewController {
     
     @IBAction func openGpxButton(_ sender: NSButton) {
         
-        // clear current table view contents
-        garminGpx.resetModel()
-        
         let openPanel = NSOpenPanel()
         openPanel.title = "Open Garmin GPX"
         openPanel.message = "Open Garmin gpx file"
@@ -51,35 +45,14 @@ class MainViewController: NSViewController {
                 print("Failed to open gpx file")
                 return
             }
-            
-            do {
-                try garminGpx.parse(gpxFile: filename)
-            } catch GarminGpx.ParseErrors.badFilename {
-                // TDOD: Alert
-                print("Failed to open gpx file")
-                return
-            } catch {
-                // TDOD: Alert
-                print("Unknown error")
-            }
-            
-            // if any table (trk, rte, wpt) is not empty switch to GPX content tab
-            if garminGpx.tracks.count > 0 ||
-                garminGpx.routes.count > 0 ||
-                garminGpx.waypoints.count > 0  {
-                
-                let index = tabView.indexOfTabViewItem(withIdentifier: "GPX Content")
-                if index != NSNotFound {
-                    let gpxContentItem = tabView.tabViewItem(at: index)
-
-                    tabView.selectTabViewItem(at: index)
-                    if let vc = gpxContentItem.viewController as? GpxContentViewController {
-                        vc.garminGpx = garminGpx
-                        vc.tracksTableView.reloadData()
-                        vc.routesTableView.reloadData()
-                        vc.waypointsTableView.reloadData()
-                    }
-                }
+            let index = tabView.indexOfTabViewItem(withIdentifier: "GPX Content")
+            if index == NSNotFound { return }
+            let gpxContentTabViewItem = tabView.tabViewItem(at: index)
+            guard let vc = gpxContentTabViewItem.viewController as? GpxContentViewController
+                else { return }
+            vc.loadView() // In case view has never been loaded
+            if vc.fillTables(with: filename) == true {
+                tabView.selectTabViewItem(at: index)
             }
         }
     }

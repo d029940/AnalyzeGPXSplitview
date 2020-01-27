@@ -11,7 +11,7 @@ import Cocoa
 class GpxContentViewController: NSViewController {
 
     // MARK:- Model
-    var garminGpx: GarminGpx?
+    let garminGpx = GarminGpx()
     
     // MARK:- Outlets
     @IBOutlet weak var routesTableView: NSTableView!
@@ -49,6 +49,38 @@ class GpxContentViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
+    
+    // MARK:- Methods
+    
+    func fillTables(with filename: URL) -> Bool {
+        
+        // clear current table view contents
+        garminGpx.resetModel()
+        
+        do {
+            try garminGpx.parse(gpxFile: filename)
+        } catch GarminGpx.ParseErrors.badFilename {
+            // TDOD: Alert
+            print("Failed to open gpx file")
+            return false
+        } catch {
+            // TDOD: Alert
+            print("Unknown error")
+        }
+        
+        // if table (trk, rte, wpt) are empty, just return this to caller
+        if garminGpx.tracks.count == 0 &&
+            garminGpx.routes.count == 0 &&
+            garminGpx.waypoints.count == 0  {
+            return false
+        }
+        
+        tracksTableView.reloadData()
+        routesTableView.reloadData()
+        waypointsTableView.reloadData()
+        
+        return true
+    }
 }
 
 // MARK:- Extensions for NSTableView
@@ -59,7 +91,7 @@ extension GpxContentViewController: NSTableViewDataSource {
         // There is only one column in the table
         let column = tableView.tableColumns[0]
         if tableView == tracksTableView {
-            let count = garminGpx?.tracks.count ?? 0
+            let count = garminGpx.tracks.count
                 if count == 0 {
                     column.title = tracksColumnText
                 } else {
@@ -68,7 +100,7 @@ extension GpxContentViewController: NSTableViewDataSource {
             return count
         }
         if tableView == routesTableView {
-            let count = garminGpx?.routes.count ?? 0
+            let count = garminGpx.routes.count
             if count == 0 {
                 column.title = routesColumnText
             } else {
@@ -77,7 +109,7 @@ extension GpxContentViewController: NSTableViewDataSource {
             return count
         }
         if tableView == waypointsTableView {
-            let count = garminGpx?.waypoints.count ?? 0
+            let count = garminGpx.waypoints.count
             if count == 0 {
                 column.title = waypointsColumnText
             } else {
@@ -93,7 +125,6 @@ extension GpxContentViewController: NSTableViewDelegate  {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let element: String
-        guard let garminGpx = garminGpx else { return nil }
         if tableView == tracksTableView {
             element = garminGpx.tracks[row]
         } else if tableView == routesTableView {
