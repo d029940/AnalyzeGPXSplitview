@@ -7,24 +7,8 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "921259ED-7605-45AB-B914-240BB9ED144F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AnalyzeGPX/Controllers/MainViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "openGpxButton(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "2B4F4DCD-36B0-46F9-8516-D92A059C5C11"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AnalyzeGPX/Model/GarminGpx.swift"
@@ -37,7 +21,7 @@
             <Locations>
                <Location
                   uuid = "2B4F4DCD-36B0-46F9-8516-D92A059C5C11 - ac247dd275cb3af8"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "AnalyzeGPX.GarminGpx.__allocating_init() -&gt; AnalyzeGPX.GarminGpx"
@@ -52,7 +36,7 @@
                </Location>
                <Location
                   uuid = "2B4F4DCD-36B0-46F9-8516-D92A059C5C11 - 20544dc08ca4335f"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "AnalyzeGPX.GarminGpx.init() -&gt; AnalyzeGPX.GarminGpx"

@@ -10,7 +10,7 @@ import Cocoa
 
 class MainViewController: NSViewController {
 
-    @IBOutlet weak var tabView: NSTabView!
+    var tabView: NSTabView!
     
     // MARK: Start up
     
@@ -34,7 +34,9 @@ class MainViewController: NSViewController {
         if index == NSNotFound { return }
         let devicesTabViewItem = tabView.tabViewItem(at: index)
         guard let vc = devicesTabViewItem.viewController as? DevicesListViewController else { return }
-        vc.loadView() // In case view has never been loaded
+        if vc.isViewLoaded == false {
+            vc.loadView()
+        }
         vc.loadGarminDevices()
         tabView.selectTabViewItem(at: index)
     }
@@ -57,14 +59,11 @@ class MainViewController: NSViewController {
             let gpxContentTabViewItem = tabView.tabViewItem(at: index)
             guard let vc = gpxContentTabViewItem.viewController as? GpxContentViewController
                 else { return }
-            print(vc.view)
-//            vc.loadView() // In case view has never been loaded
-//            if vc.fillTables(with: filename) == true {
-//                tabView.selectTabViewItem(at: index)
-//            }
+            if vc.isViewLoaded == false {
+                vc.loadView()
+            }
             vc.fillTables(with: filename)
             tabView.selectTabViewItem(at: index)
-//            vc.refreshView()
         }
     }
     
