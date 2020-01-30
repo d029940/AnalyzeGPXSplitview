@@ -52,6 +52,7 @@ class GpxContentViewController: NSViewController {
     
     // MARK:- Methods
     
+    @discardableResult
     func fillTables(with filename: URL) -> Bool {
         
         // clear current table view contents
@@ -74,12 +75,14 @@ class GpxContentViewController: NSViewController {
             garminGpx.waypoints.count == 0  {
             return false
         }
-        
+        refreshView()
+        return true
+    }
+    
+    func refreshView() {
         tracksTableView.reloadData()
         routesTableView.reloadData()
         waypointsTableView.reloadData()
-        
-        return true
     }
 }
 
