@@ -15,7 +15,7 @@ class DevicesListViewController: NSViewController {
     
     // MARK: - Propertiey
     // Table model
-    typealias VolumeEntry = (path: String, name: String)
+    typealias VolumeEntry = (path: URL, name: String)
     var listOfVolumes = [VolumeEntry]()
     
     // MARK: - Start up
@@ -77,7 +77,7 @@ class DevicesListViewController: NSViewController {
                 // Is there a GPX folder
                 for dir in gpxFolders {
                     if dir.lastPathComponent.lowercased() == "gpx" {
-                        volEntry.path = dir.absoluteString
+                        volEntry.path = dir
                         self.listOfVolumes.append(volEntry)
                     }
                 }
@@ -110,7 +110,7 @@ extension DevicesListViewController: NSTableViewDelegate  {
                                                     owner: self) as? NSTableCellView else {
                                                         return nil
             }
-            cellView.textField?.stringValue = listOfVolumes[row].path
+            cellView.textField?.stringValue = listOfVolumes[row].path.absoluteString
             return cellView
         } else if col == "name" {
             let cellIdentifier = NSUserInterfaceItemIdentifier(rawValue: "name")
@@ -127,8 +127,22 @@ extension DevicesListViewController: NSTableViewDelegate  {
     
     func tableViewSelectionDidChange(_ notification: Notification) {
         let row = self.listOfDevicesTableView.selectedRow
-        let url = URL(fileURLWithPath: listOfVolumes[row].path)
-        // TODO: Go on here
+        let url = listOfVolumes[row].path
+        
+        // find parent tabview controller
+        guard let parentVC = self.parent as? NSTabViewController else {
+            return
+        }
+        let tabView = parentVC.tabView
+        let index = tabView.indexOfTabViewItem(withIdentifier: "List GPX files")
+        if index == NSNotFound { return }
+        guard let vc = tabView.tabViewItem(at: index).viewController
+            as? ListOfGpxFilesController else { return }
+        
+        // populate "List GPX files" tabview with GPX files
+        if !vc.isViewLoaded { vc.loadView() }
+        vc.listGpxFiles(for: url)
+        tabView.selectTabViewItem(at: index)
     }
 }
 

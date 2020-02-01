@@ -20,15 +20,26 @@ class ListOfGpxFilesController: NSViewController {
     // MARK: - Start up
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
-    }
         
-}
-
-// MARK: - Methods
-
-func listGpxFiles(for path: URL) {
-
+        // Connect delegates to tableview
+        listOfGpxFilesTableView.delegate = self
+        listOfGpxFilesTableView.dataSource = self
+    }
+    
+    // MARK: - Methods
+    
+    func listGpxFiles(for url: URL) {
+        listOfGpxFiles.removeAll()
+        
+        let fm = FileManager.default
+        guard let gpxFiles = try? fm.contentsOfDirectory(at: url,
+                                                         includingPropertiesForKeys: [.isRegularFileKey],
+                                                         options: [.skipsHiddenFiles])
+            else { return }
+        listOfGpxFiles = gpxFiles.filter { ($0.pathExtension).lowercased() == "gpx"}
+        listOfGpxFilesTableView.reloadData()
+    }
+    
 }
 
 // MARK:- Extensions for NSTableView
@@ -49,7 +60,7 @@ extension ListOfGpxFilesController: NSTableViewDelegate  {
                                                 owner: self) as? NSTableCellView else {
                                                     return nil
         }
-        cellView.textField?.stringValue = listOfGpxFiles[row].path
+        cellView.textField?.stringValue = listOfGpxFiles[row].lastPathComponent
         return cellView
     }
     
