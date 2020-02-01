@@ -10,6 +10,7 @@ import Cocoa
 
 class MainViewController: NSViewController {
 
+    // MARK: - Links to the view (of the storyboard)
     var tabView: NSTabView!
     
     // MARK: Start up
@@ -30,7 +31,7 @@ class MainViewController: NSViewController {
     // MARK:- Actions
     
     @IBAction func loadGarminDevicesButton(_ sender: NSButton) {
-        let index = tabView.indexOfTabViewItem(withIdentifier: "Devices")
+        let index = tabView.indexOfTabViewItem(withIdentifier: MainViewController.devicesTabIdentifer)
         if index == NSNotFound { return }
         let devicesTabViewItem = tabView.tabViewItem(at: index)
         guard let vc = devicesTabViewItem.viewController as? DevicesListViewController else { return }
@@ -54,7 +55,7 @@ class MainViewController: NSViewController {
                 print("Failed to open gpx file")
                 return
             }
-            let index = tabView.indexOfTabViewItem(withIdentifier: "GPX Content")
+            let index = tabView.indexOfTabViewItem(withIdentifier: MainViewController.gpxContentTabIdentifier)
             if index == NSNotFound { return }
             let gpxContentTabViewItem = tabView.tabViewItem(at: index)
             guard let vc = gpxContentTabViewItem.viewController as? GpxContentViewController
@@ -70,4 +71,13 @@ class MainViewController: NSViewController {
     @IBAction func exitButton(_ sender: NSButton) {
         NSApp.terminate(self)
     }
+}
+
+// MARK: - Extension: Constants
+extension MainViewController {
+    
+    // Identifiers of storyboard are not to be translated
+    static let devicesTabIdentifer = "Devices"
+    static let gpxContentTabIdentifier = "GPX Content"
+    static let listOfGpxFilesIdentifier = "List GPX files"
 }

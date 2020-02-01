@@ -66,7 +66,7 @@ extension ListOfGpxFilesController: NSTableViewDelegate  {
             return
         }
         let tabView = parentVC.tabView
-        let index = tabView.indexOfTabViewItem(withIdentifier: "GPX Content")
+        let index = tabView.indexOfTabViewItem(withIdentifier: MainViewController.gpxContentTabIdentifier)
         if index == NSNotFound { return }
         let gpxContentTabViewItem = tabView.tabViewItem(at: index)
         guard let vc = gpxContentTabViewItem.viewController as? GpxContentViewController

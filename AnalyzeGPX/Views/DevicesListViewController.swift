@@ -94,7 +94,7 @@ extension DevicesListViewController: NSTableViewDelegate  {
             return
         }
         let tabView = parentVC.tabView
-        let index = tabView.indexOfTabViewItem(withIdentifier: "List GPX files")
+        let index = tabView.indexOfTabViewItem(withIdentifier: MainViewController.listOfGpxFilesIdentifier)
         if index == NSNotFound { return }
         guard let vc = tabView.tabViewItem(at: index).viewController
             as? ListOfGpxFilesController else { return }
