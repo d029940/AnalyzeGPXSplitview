@@ -14,8 +14,9 @@ class ListOfGpxFilesController: NSViewController {
     @IBOutlet weak var listOfGpxFilesTableView: NSTableView!
     
     // MARK: - Propertiey
-    // Table model
-    var listOfGpxFiles = [URL]()
+    
+    // Model
+    var listOfGpxFiles = GarminGpxFiles.listOfGpxFiles
 
     // MARK: - Start up
     override func viewDidLoad() {
@@ -29,14 +30,7 @@ class ListOfGpxFilesController: NSViewController {
     // MARK: - Methods
     
     func listGpxFiles(for url: URL) {
-        listOfGpxFiles.removeAll()
-        
-        let fm = FileManager.default
-        guard let gpxFiles = try? fm.contentsOfDirectory(at: url,
-                                                         includingPropertiesForKeys: [.isRegularFileKey],
-                                                         options: [.skipsHiddenFiles])
-            else { return }
-        listOfGpxFiles = gpxFiles.filter { ($0.pathExtension).lowercased() == "gpx"}
+        listOfGpxFiles = GarminGpxFiles.listGpxFiles(for: url)
         listOfGpxFilesTableView.reloadData()
     }
     

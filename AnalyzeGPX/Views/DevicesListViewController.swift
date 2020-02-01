@@ -14,9 +14,8 @@ class DevicesListViewController: NSViewController {
     @IBOutlet weak var listOfDevicesTableView: NSTableView!
     
     // MARK: - Propertiey
-    // Table model
-    typealias VolumeEntry = (path: URL, name: String)
-    var listOfVolumes = [VolumeEntry]()
+    // Model
+    var listOfVolumes = GarminGpxFiles.listOfVolumes
     
     // MARK: - Start up
     override func viewDidLoad() {
@@ -31,57 +30,18 @@ class DevicesListViewController: NSViewController {
     
     /// Searches for all Garmin/GPX folder on all mounted volumes case-insensitively and add them to the device table view
     func loadGarminDevices() {
-        self.listOfVolumes.removeAll()
         
-        let fm = FileManager.default
-        guard let listOfVol = fm.mountedVolumeURLs(includingResourceValuesForKeys: [.volumeLocalizedNameKey], options: [.skipHiddenVolumes]) else { return }
-
-        // Search all mounted volumes
-        for url in listOfVol {
-            let nameOfDriveRes = try? url.resourceValues(forKeys: [.localizedNameKey])
-            var volEntry: VolumeEntry
-            // volEntry.path = url.path
-            if let nameOfDrive = nameOfDriveRes?.localizedName {
-                volEntry.name = nameOfDrive
-            } else {
-                volEntry.name = ""
+        let errors = GarminGpxFiles.loadGarminDevices(volumes: &listOfVolumes)
+        if errors.count > 0 {
+            var errMsg = ""
+            for error in errors {
+                if !errMsg.isEmpty { errMsg.append("\n") }
+                errMsg.append(error.localizedDescription)
             }
-            // Find Garmin folder on mounted volume
-            var topLevelDirs = [URL]()
-            do {
-                try
-                topLevelDirs = fm.contentsOfDirectory(at: url,
-                                                      includingPropertiesForKeys: [.isDirectoryKey],
-                                                      options: [.skipsHiddenFiles])
-            } catch let error as NSError {
-                let alert = NSAlert(error: error)
-                alert.runModal()
-                continue
-            }
-            
-            var garminVolumes = [URL]()
-            for dir in topLevelDirs {
-                if dir.lastPathComponent.lowercased() == "garmin" {
-                    garminVolumes.append(dir)
-                }
-            }
-            if garminVolumes.isEmpty { continue }
-            
-            // Find GPX folder in Garmin folder
-            for garmin in garminVolumes {
-                guard let gpxFolders = try? fm.contentsOfDirectory(at: garmin,
-                includingPropertiesForKeys: [.isDirectoryKey],
-                options: [.skipsHiddenFiles]) else {
-                    continue
-                }
-                // Is there a GPX folder
-                for dir in gpxFolders {
-                    if dir.lastPathComponent.lowercased() == "gpx" {
-                        volEntry.path = dir
-                        self.listOfVolumes.append(volEntry)
-                    }
-                }
-            }
+            let alert = NSAlert()
+            alert.informativeText = errMsg
+            alert.runModal()
+            return
         }
         
         // refresh table view
