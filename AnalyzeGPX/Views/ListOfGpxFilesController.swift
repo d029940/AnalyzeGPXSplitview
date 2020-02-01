@@ -58,7 +58,23 @@ extension ListOfGpxFilesController: NSTableViewDelegate  {
         return cellView
     }
     
-    func ListOfGpxFiles(_ notification: Notification) {
-        // TODO: Go on here
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        let row = listOfGpxFilesTableView.selectedRow
+
+        // find parent tabview controller
+        guard let parentVC = self.parent as? NSTabViewController else {
+            return
+        }
+        let tabView = parentVC.tabView
+        let index = tabView.indexOfTabViewItem(withIdentifier: "GPX Content")
+        if index == NSNotFound { return }
+        let gpxContentTabViewItem = tabView.tabViewItem(at: index)
+        guard let vc = gpxContentTabViewItem.viewController as? GpxContentViewController
+            else { return }
+        if vc.isViewLoaded == false {
+            vc.loadView()
+        }
+        vc.fillTables(with: listOfGpxFiles[row])
+        tabView.selectTabViewItem(at: index)
     }
 }
