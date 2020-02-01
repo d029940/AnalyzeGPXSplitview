@@ -684,7 +684,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Analyze Garmin GPX files" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="800" height="600"/>
@@ -988,12 +988,11 @@
         <scene sceneID="QP3-AG-GkD">
             <objects>
                 <viewController id="8Yh-jj-dlv" userLabel="Main View Controller" customClass="MainViewController" customModule="AnalyzeGPX" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="map-eu-B9B">
-                        <rect key="frame" x="0.0" y="0.0" width="529" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="map-eu-B9B">
+                        <rect key="frame" x="0.0" y="0.0" width="668" height="420"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="usz-VC-IqK">
-                                <rect key="frame" x="14" y="13" width="167" height="32"/>
+                                <rect key="frame" x="14" y="13" width="213" height="32"/>
                                 <buttonCell key="cell" type="push" title="Load Garmin devices" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sng-Rl-RqU">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1003,7 +1002,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bf2-dt-GHe">
-                                <rect key="frame" x="181" y="13" width="167" height="32"/>
+                                <rect key="frame" x="227" y="13" width="214" height="32"/>
                                 <buttonCell key="cell" type="push" title="Open GPX file" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Trj-fW-hQF">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1013,13 +1012,13 @@
                                 </connections>
                             </button>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="lAQ-VX-W0I">
-                                <rect key="frame" x="20" y="61" width="489" height="219"/>
+                                <rect key="frame" x="20" y="61" width="628" height="339"/>
                                 <connections>
                                     <segue destination="bEl-5M-0wU" kind="embed" identifier="Embed TabView" id="wIo-tb-46o"/>
                                 </connections>
                             </containerView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Vj-Le-yn3">
-                                <rect key="frame" x="348" y="13" width="167" height="32"/>
+                                <rect key="frame" x="441" y="13" width="213" height="32"/>
                                 <buttonCell key="cell" type="push" title="Exit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IpQ-Vq-brh">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1050,7 +1049,7 @@
                 </viewController>
                 <customObject id="b55-MO-6az" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="747" y="58"/>
+            <point key="canvasLocation" x="816" y="118"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="EaN-Jq-OU6">
@@ -1205,19 +1204,17 @@
             <objects>
                 <customObject id="bQE-R9-lmN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController title="List of GPX files" id="ax5-YU-TxU" customClass="ListOfGpxFilesController" customModule="AnalyzeGPX" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="8wV-UZ-mAO">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="200"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="8wV-UZ-mAO">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="50"/>
                         <subviews>
-                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPN-vr-a5j">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPN-vr-a5j">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="50"/>
                                 <clipView key="contentView" id="gCW-Xq-46G">
-                                    <rect key="frame" x="1" y="0.0" width="448" height="199"/>
+                                    <rect key="frame" x="1" y="0.0" width="448" height="49"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="O0u-qA-5da" viewBased="YES" id="gwZ-4h-Gsm" userLabel="List of GPX files Table View">
-                                            <rect key="frame" x="0.0" y="0.0" width="448" height="174"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="24"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1281,6 +1278,12 @@
                                 </tableHeaderView>
                             </scrollView>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="aPN-vr-a5j" secondAttribute="bottom" id="1rX-fJ-m9i"/>
+                            <constraint firstAttribute="trailing" secondItem="aPN-vr-a5j" secondAttribute="trailing" id="b4I-RK-Zdp"/>
+                            <constraint firstItem="aPN-vr-a5j" firstAttribute="top" secondItem="8wV-UZ-mAO" secondAttribute="top" id="hQM-bu-RU3"/>
+                            <constraint firstItem="aPN-vr-a5j" firstAttribute="leading" secondItem="8wV-UZ-mAO" secondAttribute="leading" id="n4K-iQ-cjW"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="listOfGpxFilesTableView" destination="gwZ-4h-Gsm" id="Xum-2M-89s"/>
