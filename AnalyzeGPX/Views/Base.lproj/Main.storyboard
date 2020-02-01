@@ -739,7 +739,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="cell" translatesAutoresizingMaskIntoConstraints="NO" id="ypy-Sr-O6r">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="257" height="17"/>
+                                                                    <rect key="frame" x="1" y="1" width="257" height="17"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="yuu-qh-bKT">
                                                                             <rect key="frame" x="0.0" y="0.0" width="257" height="17"/>
@@ -828,7 +828,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="cell" translatesAutoresizingMaskIntoConstraints="NO" id="BWB-90-jPL">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="256" height="17"/>
+                                                                    <rect key="frame" x="1" y="1" width="256" height="17"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="xTz-z1-YdY">
                                                                             <rect key="frame" x="0.0" y="0.0" width="256" height="17"/>
@@ -908,7 +908,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="cell" translatesAutoresizingMaskIntoConstraints="NO" id="sSD-7L-tA5">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="256" height="17"/>
+                                                                    <rect key="frame" x="1" y="1" width="256" height="17"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="R5J-wA-a5m">
                                                                             <rect key="frame" x="0.0" y="0.0" width="256" height="17"/>
@@ -1111,7 +1111,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView identifier="name" translatesAutoresizingMaskIntoConstraints="NO" id="Cp6-1z-6UT">
-                                                    <rect key="frame" x="0.0" y="0.0" width="151" height="17"/>
+                                                    <rect key="frame" x="1" y="1" width="151" height="17"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Lh7-yH-roM">
                                                             <rect key="frame" x="0.0" y="0.0" width="151" height="17"/>
@@ -1150,7 +1150,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView identifier="path" translatesAutoresizingMaskIntoConstraints="NO" id="f3g-rQ-Zc4">
-                                                    <rect key="frame" x="0.0" y="0.0" width="291" height="17"/>
+                                                    <rect key="frame" x="155" y="1" width="291" height="17"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="fYE-6t-pfB">
                                                             <rect key="frame" x="0.0" y="0.0" width="291" height="17"/>
@@ -1204,11 +1204,87 @@
         <scene sceneID="6Cz-ZG-z6J">
             <objects>
                 <customObject id="bQE-R9-lmN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController title="List of GPX files" id="ax5-YU-TxU" sceneMemberID="viewController">
+                <viewController title="List of GPX files" id="ax5-YU-TxU" customClass="ListOfGpxFilesController" customModule="AnalyzeGPX" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="8wV-UZ-mAO">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="200"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPN-vr-a5j">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <clipView key="contentView" id="gCW-Xq-46G">
+                                    <rect key="frame" x="1" y="0.0" width="448" height="199"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="O0u-qA-5da" viewBased="YES" id="gwZ-4h-Gsm" userLabel="List of GPX files Table View">
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="174"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn width="445" minWidth="40" maxWidth="1000" id="vF9-u5-tvi">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="List of GX files">
+                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="Zc0-oD-tyx">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView identifier="cell" id="sn8-zJ-5sq">
+                                                            <rect key="frame" x="1" y="1" width="445" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Scw-7c-ia8">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="445" height="17"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="17" id="f4g-Ov-Zg8"/>
+                                                                    </constraints>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="lSI-6d-9WA">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="Scw-7c-ia8" firstAttribute="centerY" secondItem="sn8-zJ-5sq" secondAttribute="centerY" id="6Lq-Wh-plX"/>
+                                                                <constraint firstItem="Scw-7c-ia8" firstAttribute="centerX" secondItem="sn8-zJ-5sq" secondAttribute="centerX" id="H45-Wv-Vrg"/>
+                                                                <constraint firstItem="Scw-7c-ia8" firstAttribute="leading" secondItem="sn8-zJ-5sq" secondAttribute="leading" constant="2" id="XnK-Sm-m7l"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="textField" destination="Scw-7c-ia8" id="qHg-HH-bBS"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                </tableColumn>
+                                            </tableColumns>
+                                        </tableView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="UTA-Mg-JT8">
+                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="bnt-sA-qYB">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <tableHeaderView key="headerView" id="O0u-qA-5da">
+                                    <rect key="frame" x="0.0" y="0.0" width="448" height="25"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableHeaderView>
+                            </scrollView>
+                        </subviews>
                     </view>
+                    <connections>
+                        <outlet property="listOfGpxFilesTableView" destination="gwZ-4h-Gsm" id="Xum-2M-89s"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1247" y="1126"/>
