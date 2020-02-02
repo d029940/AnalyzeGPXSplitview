@@ -33,19 +33,18 @@ class GarminGpxFiles{
     }
     
     /// Searches for all Garmin/GPX folder on all mounted volumes case-insensitively and add them to the device table view
-    /// If errors occur during reading the directories thery are returned as a list
-    static func loadGarminDevices(volumes: inout [VolumeEntry] ) -> [NSError] {
+    /// If errors occur during reading the directories thery are returned in the errors parameter
+    static func loadGarminDevices(errors: inout [NSError] ) -> [VolumeEntry] {
         listOfVolumes.removeAll()
-        var errors = [NSError]()
+        errors.removeAll()
         
         let fm = FileManager.default
-        guard let listOfVol = fm.mountedVolumeURLs(includingResourceValuesForKeys: [.volumeLocalizedNameKey], options: [.skipHiddenVolumes]) else { return errors }
+        guard let listOfVol = fm.mountedVolumeURLs(includingResourceValuesForKeys: [.volumeLocalizedNameKey], options: [.skipHiddenVolumes]) else { return listOfVolumes }
 
         // Search all mounted volumes
         for url in listOfVol {
             let nameOfDriveRes = try? url.resourceValues(forKeys: [.localizedNameKey])
             var volEntry: GarminGpxFiles.VolumeEntry
-            // volEntry.path = url.path
             if let nameOfDrive = nameOfDriveRes?.localizedName {
                 volEntry.name = nameOfDrive
             } else {
@@ -87,7 +86,6 @@ class GarminGpxFiles{
                 }
             }
         }
-        volumes = listOfVolumes
-        return errors
+        return listOfVolumes
     }
 }

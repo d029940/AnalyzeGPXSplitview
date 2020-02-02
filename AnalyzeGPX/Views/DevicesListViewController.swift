@@ -31,7 +31,8 @@ class DevicesListViewController: NSViewController {
     /// Searches for all Garmin/GPX folder on all mounted volumes case-insensitively and add them to the device table view
     func loadGarminDevices() {
         
-        let errors = GarminGpxFiles.loadGarminDevices(volumes: &listOfVolumes)
+        var errors = [NSError]()        
+        listOfVolumes = GarminGpxFiles.loadGarminDevices(errors: &errors)
         if errors.count > 0 {
             var errMsg = ""
             for error in errors {
