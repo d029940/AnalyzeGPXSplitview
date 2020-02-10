@@ -20,6 +20,7 @@ class GarminGpxFiles{
     
     // MARK: - Methods
     
+    /// Finds all GOX files for a given Garmin/GPX folder
     static func listGpxFiles(for url: URL) -> [URL] {
         listOfGpxFiles.removeAll()
         

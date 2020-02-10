@@ -7,29 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6383124423E307CB009E6376 /* DevicesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6383124323E307CB009E6376 /* DevicesListViewController.swift */; };
+		6313C11123F0BA2E0016A529 /* MainSplitView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6313C10F23F0BA2E0016A529 /* MainSplitView.storyboard */; };
 		639C1D4023E5CCCB00199066 /* GarminGpxFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C1D3F23E5CCCB00199066 /* GarminGpxFiles.swift */; };
 		639E839C23C511E70048666A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E839B23C511E70048666A /* AppDelegate.swift */; };
 		639E839E23C511E70048666A /* GpxContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E839D23C511E70048666A /* GpxContentViewController.swift */; };
 		639E83A023C511EA0048666A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 639E839F23C511EA0048666A /* Assets.xcassets */; };
-		639E83A323C511EA0048666A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639E83A123C511EA0048666A /* Main.storyboard */; };
 		639E83AC23C512600048666A /* GarminGpx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E83AB23C512600048666A /* GarminGpx.swift */; };
-		63C96E1F23E5B44700F4C761 /* ListOfGpxFilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C96E1E23E5B44700F4C761 /* ListOfGpxFilesController.swift */; };
+		63C96E1F23E5B44700F4C761 /* GpxFilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C96E1E23E5B44700F4C761 /* GpxFilesController.swift */; };
 		63DDBDB023D8D0F6001FDB0B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DDBDAF23D8D0F6001FDB0B /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6383124323E307CB009E6376 /* DevicesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DevicesListViewController.swift; path = AnalyzeGPX/Views/DevicesListViewController.swift; sourceTree = SOURCE_ROOT; };
+		6313C11023F0BA2E0016A529 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainSplitView.storyboard; sourceTree = "<group>"; };
 		639C1D3F23E5CCCB00199066 /* GarminGpxFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarminGpxFiles.swift; sourceTree = "<group>"; };
 		639E839823C511E70048666A /* AnalyzeGPX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnalyzeGPX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		639E839B23C511E70048666A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		639E839D23C511E70048666A /* GpxContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpxContentViewController.swift; sourceTree = "<group>"; };
 		639E839F23C511EA0048666A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		639E83A223C511EA0048666A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		639E83A423C511EA0048666A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		639E83A523C511EA0048666A /* AnalyzeGPX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnalyzeGPX.entitlements; sourceTree = "<group>"; };
 		639E83AB23C512600048666A /* GarminGpx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarminGpx.swift; sourceTree = "<group>"; };
-		63C96E1E23E5B44700F4C761 /* ListOfGpxFilesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListOfGpxFilesController.swift; path = AnalyzeGPX/Views/ListOfGpxFilesController.swift; sourceTree = SOURCE_ROOT; };
+		63C96E1E23E5B44700F4C761 /* GpxFilesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GpxFilesController.swift; path = AnalyzeGPX/Views/GpxFilesController.swift; sourceTree = SOURCE_ROOT; };
 		63DDBDAF23D8D0F6001FDB0B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,8 +82,7 @@
 		63DDBDB223D8D14E001FDB0B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				63C96E1E23E5B44700F4C761 /* ListOfGpxFilesController.swift */,
-				6383124323E307CB009E6376 /* DevicesListViewController.swift */,
+				63C96E1E23E5B44700F4C761 /* GpxFilesController.swift */,
 				639E839D23C511E70048666A /* GpxContentViewController.swift */,
 				63DDBDAF23D8D0F6001FDB0B /* MainViewController.swift */,
 			);
@@ -95,7 +92,7 @@
 		63DDBDB323D8D17B001FDB0B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				639E83A123C511EA0048666A /* Main.storyboard */,
+				6313C10F23F0BA2E0016A529 /* MainSplitView.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -169,7 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				639E83A023C511EA0048666A /* Assets.xcassets in Resources */,
-				639E83A323C511EA0048666A /* Main.storyboard in Resources */,
+				6313C11123F0BA2E0016A529 /* MainSplitView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,8 +180,7 @@
 				639C1D4023E5CCCB00199066 /* GarminGpxFiles.swift in Sources */,
 				639E839E23C511E70048666A /* GpxContentViewController.swift in Sources */,
 				639E83AC23C512600048666A /* GarminGpx.swift in Sources */,
-				63C96E1F23E5B44700F4C761 /* ListOfGpxFilesController.swift in Sources */,
-				6383124423E307CB009E6376 /* DevicesListViewController.swift in Sources */,
+				63C96E1F23E5B44700F4C761 /* GpxFilesController.swift in Sources */,
 				639E839C23C511E70048666A /* AppDelegate.swift in Sources */,
 				63DDBDB023D8D0F6001FDB0B /* MainViewController.swift in Sources */,
 			);
@@ -193,12 +189,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		639E83A123C511EA0048666A /* Main.storyboard */ = {
+		6313C10F23F0BA2E0016A529 /* MainSplitView.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				639E83A223C511EA0048666A /* Base */,
+				6313C11023F0BA2E0016A529 /* Base */,
 			);
-			name = Main.storyboard;
+			name = MainSplitView.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

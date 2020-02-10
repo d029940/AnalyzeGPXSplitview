@@ -10,8 +10,12 @@ import Cocoa
 
 class MainViewController: NSViewController {
 
-    // MARK: - Links to the view (of the storyboard)
-    var tabView: NSTabView!
+    // MARK: - Links to the view / VC (of the storyboard)
+    
+    // Splitview controllers
+    var gpxFilesVC: GpxFilesController?
+    var gpxContentVC: GpxContentViewController?
+
     
     // MARK: Start up
     
@@ -22,24 +26,22 @@ class MainViewController: NSViewController {
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destinationController
-        guard segue.identifier == "Embed TabView" else { return }
-        if let tabVC = destinationVC as? NSTabViewController {
-            tabView = tabVC.tabView
+        
+        // Get the VCs of the splitview items
+        guard segue.identifier == MainViewController.splitViewSeque else { return }
+        if let vc = destinationVC as? NSSplitViewController {
+            let splitViewItems = vc.splitViewItems
+            gpxFilesVC = splitViewItems.first?.viewController as? GpxFilesController
+            gpxContentVC = splitViewItems.count > 1 ? splitViewItems[1].viewController as? GpxContentViewController : nil
         }
     }
     
     // MARK:- Actions
     
     @IBAction func loadGarminDevicesButton(_ sender: NSButton) {
-        let index = tabView.indexOfTabViewItem(withIdentifier: MainViewController.devicesTabIdentifer)
-        if index == NSNotFound { return }
-        let devicesTabViewItem = tabView.tabViewItem(at: index)
-        guard let vc = devicesTabViewItem.viewController as? DevicesListViewController else { return }
-        if vc.isViewLoaded == false {
-            vc.loadView()
-        }
+        guard let vc = gpxFilesVC else { return }
         vc.loadGarminDevices()
-        tabView.selectTabViewItem(at: index)
+//        tabView.selectTabViewItem(at: index)
     }
     
     @IBAction func openGpxButton(_ sender: NSButton) {
@@ -55,16 +57,9 @@ class MainViewController: NSViewController {
                 print("Failed to open gpx file")
                 return
             }
-            let index = tabView.indexOfTabViewItem(withIdentifier: MainViewController.gpxContentTabIdentifier)
-            if index == NSNotFound { return }
-            let gpxContentTabViewItem = tabView.tabViewItem(at: index)
-            guard let vc = gpxContentTabViewItem.viewController as? GpxContentViewController
+            guard let vc = gpxContentVC
                 else { return }
-            if vc.isViewLoaded == false {
-                vc.loadView()
-            }
             vc.fillTables(with: filename)
-            tabView.selectTabViewItem(at: index)
         }
     }
     
@@ -77,7 +72,5 @@ class MainViewController: NSViewController {
 extension MainViewController {
     
     // Identifiers of storyboard are not to be translated
-    static let devicesTabIdentifer = "Devices"
-    static let gpxContentTabIdentifier = "GPX Content"
-    static let listOfGpxFilesIdentifier = "List GPX files"
+    static let splitViewSeque = "SplitView"
 }
