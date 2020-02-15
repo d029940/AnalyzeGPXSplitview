@@ -47,7 +47,7 @@ class GpxFilesController: NSViewController {
     }
 }
 
-// MARK:- Extensions for NSTableView
+// MARK:- Extensions for NSOutlineView
 
 extension GpxFilesController: NSOutlineViewDataSource {
     
