@@ -9,48 +9,54 @@
 import Foundation
 
 class GarminGpxFiles{
-    
-    // MARK: - Propertiey
-    // Table model
-    typealias VolumeEntry = (path: URL, name: String)
-    static var listOfVolumes = [VolumeEntry]()
-    
-    static var listOfGpxFiles = [URL]()
-
+        
+    // Item of a tree node
+    struct VolFileItem {
+        var name: String   // Name of volume or file
+        var path: URL      // full path
+        var files: [VolFileItem]   // GPX files - for the level of volumes = 0
+    }
+    typealias AllGpxFiles = [VolFileItem]
+    static var allGpxFiles = [VolFileItem]()
     
     // MARK: - Methods
     
-    /// Finds all GOX files for a given Garmin/GPX folder
-    static func listGpxFiles(for url: URL) -> [URL] {
-        listOfGpxFiles.removeAll()
+    /// List all GPX files for a given item and add them to its files property
+    /// - Parameter item: to look for GPX files and return them in the files property
+    static func listGpxFiles(for item: inout VolFileItem) {
+        item.files.removeAll()
         
         let fm = FileManager.default
-        guard let gpxFiles = try? fm.contentsOfDirectory(at: url,
+        guard let gpxFiles = try? fm.contentsOfDirectory(at: item.path,
                                                          includingPropertiesForKeys: [.isRegularFileKey],
                                                          options: [.skipsHiddenFiles])
-            else { return listOfGpxFiles }
-        listOfGpxFiles = gpxFiles.filter { ($0.pathExtension).lowercased() == "gpx"}
-        return listOfGpxFiles
+            else { return }
+        
+        for file in gpxFiles.filter({ ($0.pathExtension).lowercased() == "gpx"}) {
+            item.files.append(VolFileItem(name: file.lastPathComponent,
+                                          path: file,
+                                          files: []))
+        }
     }
     
-    /// Searches for all Garmin/GPX folder on all mounted volumes case-insensitively and add them to the device table view
-    /// If errors occur during reading the directories thery are returned in the errors parameter
-    static func loadGarminDevices(errors: inout [NSError] ) -> [VolumeEntry] {
-        listOfVolumes.removeAll()
+    /// Searches for "Garmin/GPX" folder on all mounted volumes case-insensitively and add them to property "allGpxFiles"
+    /// - seealso:: allGpxFiles
+    /// - returns: A list of errors occur during reading the directories
+
+    static func loadGarminDevices() -> [NSError] {
+        var errors = [NSError]()
+        allGpxFiles.removeAll()
         errors.removeAll()
         
         let fm = FileManager.default
-        guard let listOfVol = fm.mountedVolumeURLs(includingResourceValuesForKeys: [.volumeLocalizedNameKey], options: [.skipHiddenVolumes]) else { return listOfVolumes }
+        guard let listOfVol = fm.mountedVolumeURLs(includingResourceValuesForKeys: [.volumeLocalizedNameKey], options: [.skipHiddenVolumes]) else { return errors }
 
         // Search all mounted volumes
         for url in listOfVol {
             let nameOfDriveRes = try? url.resourceValues(forKeys: [.localizedNameKey])
-            var volEntry: GarminGpxFiles.VolumeEntry
-            if let nameOfDrive = nameOfDriveRes?.localizedName {
-                volEntry.name = nameOfDrive
-            } else {
-                volEntry.name = ""
-            }
+            var name: String = ""
+            if let nameOfDrive = nameOfDriveRes?.localizedName { name = nameOfDrive }
+                
             // Find Garmin folder on mounted volume
             var topLevelDirs = [URL]()
             do {
@@ -81,12 +87,13 @@ class GarminGpxFiles{
                 // Is there a GPX folder
                 for dir in gpxFolders {
                     if dir.lastPathComponent.lowercased() == "gpx" {
-                        volEntry.path = dir
-                        self.listOfVolumes.append(volEntry)
+                        let volFileItem = VolFileItem(name: name, path: dir, files: [])
+                        self.allGpxFiles.append(volFileItem)
                     }
                 }
             }
         }
-        return listOfVolumes
+        return errors
     }
+
 }

@@ -12,12 +12,7 @@ class GpxFilesController: NSViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var listOfGpxFilesOutlineView: NSOutlineView!
-    
-    // MARK: - Propertiey
-    
-    // Model
-    var listOfVolumes = GarminGpxFiles.listOfVolumes
-    var listOfGpxFiles = GarminGpxFiles.listOfGpxFiles
+
 
     // MARK: - Start up
     override func viewDidLoad() {
@@ -29,9 +24,8 @@ class GpxFilesController: NSViewController {
     
     /// Searches for all Garmin/GPX folder on all mounted volumes case-insensitively and add them to treeview view
     func loadGarminDevices() {
-        
-        var errors = [NSError]()
-        listOfVolumes = GarminGpxFiles.loadGarminDevices(errors: &errors)
+        // collect devices/volumes which have GPX files in folder /Garmin/GPX
+        let errors = GarminGpxFiles.loadGarminDevices()
         if errors.count > 0 {
             var errMsg = ""
             for error in errors {
@@ -43,8 +37,17 @@ class GpxFilesController: NSViewController {
             alert.runModal()
             return
         }
+        var index = 0
+        
+        // read GPX files for each volume/device
+        while index < GarminGpxFiles.allGpxFiles.count {
+            GarminGpxFiles.listGpxFiles(for: &GarminGpxFiles.allGpxFiles[index])
+            index+=1
+        }
+        
         listOfGpxFilesOutlineView.reloadData()
     }
+
 }
 
 // MARK:- Extensions for NSOutlineView
@@ -54,26 +57,25 @@ extension GpxFilesController: NSOutlineViewDataSource {
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         if item == nil {
             // Top level: list volumes (devices)
-            return listOfVolumes.count
+            return GarminGpxFiles.allGpxFiles.count
         }
-        return listOfGpxFiles.count
+        guard let item = item as? GarminGpxFiles.VolFileItem else { return 0}
+        return item.files.count
     }
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         if item == nil {
-            return listOfVolumes[index]
+            return GarminGpxFiles.allGpxFiles[index]
         } else {
-            return listOfGpxFiles[index]
+            return (item as! GarminGpxFiles.VolFileItem).files[index]
         }
     }
     
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        if item is GarminGpxFiles.VolumeEntry {
-            // Only the top level (volumes / devices) is expandable
-            return listOfVolumes.count > 0
+        guard let item = item as? GarminGpxFiles.VolFileItem else {
+            return false
         }
-        
-        return false
+        return item.files.count > 0
     }
 }
 
@@ -86,7 +88,7 @@ extension GpxFilesController: NSOutlineViewDelegate {
         if tableColumn!.identifier.rawValue == "name" {
             view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "name"), owner: self) as? NSTableCellView
             if let textField = view?.textField {
-                if let volume = item as? GarminGpxFiles.VolumeEntry {
+                if let volume = item as? GarminGpxFiles.VolFileItem {
                     textField.stringValue = volume.name
                 } else if let url = item as? URL {
                     textField.stringValue = url.lastPathComponent
@@ -96,7 +98,7 @@ extension GpxFilesController: NSOutlineViewDelegate {
         if tableColumn!.identifier.rawValue == "path" {
             view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "path"), owner: self) as? NSTableCellView
             if let textField = view?.textField {
-                if let volume = item as? GarminGpxFiles.VolumeEntry {
+                if let volume = item as? GarminGpxFiles.VolFileItem {
                     textField.stringValue = volume.path.absoluteString
                 } else if let url = item as? URL {
                     textField.stringValue = url.absoluteString
@@ -108,22 +110,20 @@ extension GpxFilesController: NSOutlineViewDelegate {
     }
     
     func outlineViewSelectionDidChange(_ notification: Notification) {
-          guard let outlineView = notification.object as? NSOutlineView else {
-          return
-        }
-
-        let selectedIndex = outlineView.selectedRow
-        if let volume = outlineView.item(atRow: selectedIndex) as? GarminGpxFiles.VolumeEntry {
-            listOfGpxFiles = GarminGpxFiles.listGpxFiles(for: volume.path)
-            listOfGpxFilesOutlineView.reloadData()
-            outlineView.expandItem(outlineView.item(atRow: selectedIndex))
+        guard let outlineView = notification.object as? NSOutlineView else {
             return
         }
-        if let url = outlineView.item(atRow: selectedIndex) as? URL {
-            // --> Splitview Controller --> Mainview Controller
-            guard let parentVC = self.parent?.parent as? MainViewController else { return }
-            guard let vc = parentVC.gpxContentVC else { return }
-            vc.fillTables(with: url)
+        
+        let item = outlineView.item(atRow: outlineView.selectedRow)
+        if outlineView.isExpandable(item) {
+            outlineView.expandItem(item)
         }
+        
+        guard let volFileItem = item as? GarminGpxFiles.VolFileItem  else { return }
+        
+        // --> Splitview Controller --> Mainview Controller
+        guard let parentVC = self.parent?.parent as? MainViewController else { return }
+        guard let vc = parentVC.gpxContentVC else { return }
+        vc.fillTables(with: volFileItem.path)
     }
 }
