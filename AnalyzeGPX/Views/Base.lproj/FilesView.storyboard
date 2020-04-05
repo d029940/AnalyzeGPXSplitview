@@ -12,7 +12,7 @@
                 <viewController id="jeA-zb-mJW" userLabel="Files View Controller" customClass="GpxFilesController" customModule="AnalyzeGPX" customModuleProvider="target" sceneMemberID="viewController">
                     <scrollView key="view" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="tQ7-pw-gDW" userLabel="Files - Outline View">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="K0Q-fY-G90">
                             <rect key="frame" x="1" y="0.0" width="448" height="299"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

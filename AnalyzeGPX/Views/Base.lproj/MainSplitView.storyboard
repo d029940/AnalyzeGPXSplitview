@@ -706,10 +706,10 @@
             <objects>
                 <viewController id="8Yh-jj-dlv" userLabel="Main View Controller" customClass="MainViewController" customModule="AnalyzeGPX" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="map-eu-B9B">
-                        <rect key="frame" x="0.0" y="0.0" width="668" height="420"/>
+                        <rect key="frame" x="0.0" y="0.0" width="800" height="420"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="usz-VC-IqK">
-                                <rect key="frame" x="14" y="13" width="213" height="32"/>
+                                <rect key="frame" x="14" y="13" width="257" height="32"/>
                                 <buttonCell key="cell" type="push" title="Load Garmin devices" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sng-Rl-RqU">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -719,7 +719,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bf2-dt-GHe">
-                                <rect key="frame" x="227" y="13" width="214" height="32"/>
+                                <rect key="frame" x="271" y="13" width="258" height="32"/>
                                 <buttonCell key="cell" type="push" title="Open GPX file" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Trj-fW-hQF">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -729,13 +729,13 @@
                                 </connections>
                             </button>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="lAQ-VX-W0I">
-                                <rect key="frame" x="20" y="61" width="628" height="339"/>
+                                <rect key="frame" x="20" y="61" width="760" height="339"/>
                                 <connections>
                                     <segue destination="ztZ-Lr-83b" kind="embed" identifier="SplitView" id="TUc-WF-hAB"/>
                                 </connections>
                             </containerView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Vj-Le-yn3">
-                                <rect key="frame" x="441" y="13" width="213" height="32"/>
+                                <rect key="frame" x="529" y="13" width="257" height="32"/>
                                 <buttonCell key="cell" type="push" title="Exit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IpQ-Vq-brh">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -778,7 +778,7 @@
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="KTi-wK-1VC">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <connections>
                             <outlet property="delegate" destination="ztZ-Lr-83b" id="dFC-7F-ogG"/>
                         </connections>
