@@ -13,6 +13,8 @@
 		639E839E23C511E70048666A /* GpxContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E839D23C511E70048666A /* GpxContentViewController.swift */; };
 		639E83A023C511EA0048666A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 639E839F23C511EA0048666A /* Assets.xcassets */; };
 		639E83AC23C512600048666A /* GarminGpx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E83AB23C512600048666A /* GarminGpx.swift */; };
+		63ABA9C0243A3C900026D550 /* GpxContentView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63ABA9BF243A3C900026D550 /* GpxContentView.storyboard */; };
+		63ABA9C3243A3D950026D550 /* FilesView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63ABA9C1243A3D950026D550 /* FilesView.storyboard */; };
 		63C96E1F23E5B44700F4C761 /* GpxFilesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C96E1E23E5B44700F4C761 /* GpxFilesController.swift */; };
 		63DDBDB023D8D0F6001FDB0B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DDBDAF23D8D0F6001FDB0B /* MainViewController.swift */; };
 /* End PBXBuildFile section */
@@ -27,6 +29,8 @@
 		639E83A423C511EA0048666A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		639E83A523C511EA0048666A /* AnalyzeGPX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnalyzeGPX.entitlements; sourceTree = "<group>"; };
 		639E83AB23C512600048666A /* GarminGpx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarminGpx.swift; sourceTree = "<group>"; };
+		63ABA9BF243A3C900026D550 /* GpxContentView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GpxContentView.storyboard; sourceTree = "<group>"; };
+		63ABA9C2243A3D950026D550 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FilesView.storyboard; sourceTree = "<group>"; };
 		63C96E1E23E5B44700F4C761 /* GpxFilesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GpxFilesController.swift; path = AnalyzeGPX/Views/GpxFilesController.swift; sourceTree = SOURCE_ROOT; };
 		63DDBDAF23D8D0F6001FDB0B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +96,8 @@
 		63DDBDB323D8D17B001FDB0B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				63ABA9C1243A3D950026D550 /* FilesView.storyboard */,
+				63ABA9BF243A3C900026D550 /* GpxContentView.storyboard */,
 				6313C10F23F0BA2E0016A529 /* MainSplitView.storyboard */,
 			);
 			path = Views;
@@ -166,7 +172,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				639E83A023C511EA0048666A /* Assets.xcassets in Resources */,
+				63ABA9C3243A3D950026D550 /* FilesView.storyboard in Resources */,
 				6313C11123F0BA2E0016A529 /* MainSplitView.storyboard in Resources */,
+				63ABA9C0243A3C900026D550 /* GpxContentView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +203,14 @@
 				6313C11023F0BA2E0016A529 /* Base */,
 			);
 			name = MainSplitView.storyboard;
+			sourceTree = "<group>";
+		};
+		63ABA9C1243A3D950026D550 /* FilesView.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63ABA9C2243A3D950026D550 /* Base */,
+			);
+			name = FilesView.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
