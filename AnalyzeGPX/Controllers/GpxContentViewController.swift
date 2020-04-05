@@ -18,6 +18,8 @@ class GpxContentViewController: NSViewController {
     @IBOutlet weak var waypointsTableView: NSTableView!
     @IBOutlet weak var tracksTableView: NSTableView!
     
+    @IBOutlet var tableMenu: NSMenu!
+    
     // MARK:- local variables
     
     // TDOD: Localize
