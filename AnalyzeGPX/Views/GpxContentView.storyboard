@@ -13,12 +13,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="541"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <splitView fixedFrame="YES" dividerStyle="paneSplitter" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I22-X6-w4O">
+                            <splitView fixedFrame="YES" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I22-X6-w4O">
                                 <rect key="frame" x="0.0" y="0.0" width="604" height="541"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <customView horizontalCompressionResistancePriority="250" id="AjG-rV-0hS" userLabel="Routes View">
-                                        <rect key="frame" x="0.0" y="0.0" width="195" height="541"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="201" height="541"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ruj-6w-MNu" userLabel="Routes Bordered Scroll View">
@@ -111,7 +111,7 @@
                                         </constraints>
                                     </customView>
                                     <customView horizontalCompressionResistancePriority="250" id="xiU-mY-fZn" userLabel="Waypoints View">
-                                        <rect key="frame" x="205" y="0.0" width="194" height="541"/>
+                                        <rect key="frame" x="202" y="0.0" width="200" height="541"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8B-1j-1VP" userLabel="Waypoints Bordered Scroll View ">
@@ -195,7 +195,7 @@
                                         </constraints>
                                     </customView>
                                     <customView horizontalCompressionResistancePriority="250" id="0lo-EU-qz5" userLabel="Tracks View">
-                                        <rect key="frame" x="409" y="0.0" width="195" height="541"/>
+                                        <rect key="frame" x="403" y="0.0" width="201" height="541"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvH-4W-dYq" userLabel="Tracks Bordered Scroll View">
