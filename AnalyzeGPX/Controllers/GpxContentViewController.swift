@@ -70,15 +70,14 @@ class GpxContentViewController: NSViewController {
             // TDOD: Alert
             print("Unknown error")
         }
-        
-        // if table (trk, rte, wpt) are empty, just return this to caller
-        if garminGpx.tracks.count == 0 &&
-            garminGpx.routes.count == 0 &&
-            garminGpx.waypoints.count == 0  {
-            return false
-        }
+
         refreshView()
         return true
+    }
+    
+    func clearTables() {
+        garminGpx.resetModel()
+        refreshView()
     }
     
     func refreshView() {
