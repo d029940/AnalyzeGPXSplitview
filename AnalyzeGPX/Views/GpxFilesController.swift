@@ -25,8 +25,7 @@ class GpxFilesController: NSViewController {
     /// Searches for all Garmin/GPX folder on all mounted volumes case-insensitively and add them to treeview view
     func loadGarminDevices() {
         
-        // Clear all table views of GpxContentViewController
-        // --> Splitview Controller --> Mainview Controller
+        // First Clear all table views of the GpxContentViewController
         guard let parentVC = self.parent?.parent as? MainViewController else { return }
         guard let vc = parentVC.gpxContentVC else { return }
         vc.clearTables()

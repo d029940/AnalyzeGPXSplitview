@@ -10,7 +10,7 @@ import Foundation
 
 class GarminGpxFiles{
         
-    // Item of a tree node
+    /// Item of a tree node
     struct VolFileItem {
         var name: String   // Name of volume or file
         var path: URL      // full path

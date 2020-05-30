@@ -54,6 +54,9 @@ class GpxContentViewController: NSViewController {
     
     // MARK:- Methods
     
+    /// Fill the tracks, routes & waypoint tables from a GPX file
+    /// - Parameter filename: GPX filename
+    /// - Returns: true if gpx file is successfully parsed, false otherwise
     @discardableResult
     func fillTables(with filename: URL) -> Bool {
         
@@ -69,17 +72,20 @@ class GpxContentViewController: NSViewController {
         } catch {
             // TDOD: Alert
             print("Unknown error")
+            return false
         }
 
         refreshView()
         return true
     }
     
+    /// Reset the model (data) of the current GPX and refresh the table views for tracks, routes 6 waypoints
     func clearTables() {
         garminGpx.resetModel()
         refreshView()
     }
     
+    /// Refresh the table views for tracks, routes 6 waypoints
     func refreshView() {
         tracksTableView.reloadData()
         routesTableView.reloadData()

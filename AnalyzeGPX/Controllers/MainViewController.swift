@@ -38,12 +38,16 @@ class MainViewController: NSViewController {
     
     // MARK:- Actions
     
+    /// Search GPX files in /Garmin/GPX places of attached volumes and shows them in the splitview
+    /// - Parameter sender: Button in storyboard
     @IBAction func loadGarminDevicesButton(_ sender: NSButton) {
         guard let vc = gpxFilesVC else { return }
         vc.loadGarminDevices()
-//        tabView.selectTabViewItem(at: index)
     }
     
+    /// Presents an Open panel to the user to select a GPX file. The file will be parsed and
+    /// the content is shown in tracks, routes & waypoints table views
+    /// - Parameter sender: Button in storyboard
     @IBAction func openGpxButton(_ sender: NSButton) {
         
         let openPanel = NSOpenPanel()
@@ -63,6 +67,8 @@ class MainViewController: NSViewController {
         }
     }
     
+    /// Exits the application
+    /// - Parameter sender: Button in storyboard
     @IBAction func exitButton(_ sender: NSButton) {
         NSApp.terminate(self)
     }
@@ -71,6 +77,6 @@ class MainViewController: NSViewController {
 // MARK: - Extension: Constants
 extension MainViewController {
     
-    // Identifiers of storyboard are not to be translated
+    // Identifier for sequeing to a split view (not to be translated)
     static let splitViewSeque = "SplitView"
 }
