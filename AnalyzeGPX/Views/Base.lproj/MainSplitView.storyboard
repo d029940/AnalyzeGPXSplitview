@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -708,59 +709,81 @@
                     <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="map-eu-B9B">
                         <rect key="frame" x="0.0" y="0.0" width="800" height="420"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="usz-VC-IqK">
-                                <rect key="frame" x="14" y="13" width="257" height="32"/>
-                                <buttonCell key="cell" type="push" title="Load Garmin devices" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sng-Rl-RqU">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="loadGarminDevicesButton:" target="8Yh-jj-dlv" id="s4z-yQ-mXs"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bf2-dt-GHe">
-                                <rect key="frame" x="271" y="13" width="258" height="32"/>
-                                <buttonCell key="cell" type="push" title="Open GPX file" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Trj-fW-hQF">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="openGpxButton:" target="8Yh-jj-dlv" id="Zrb-Ec-OYV"/>
-                                </connections>
-                            </button>
+                            <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aeK-CS-k8t" userLabel="Stack View Buttons">
+                                <rect key="frame" x="20" y="20" width="760" height="20"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="usz-VC-IqK">
+                                        <rect key="frame" x="-7" y="-7" width="189" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Load Garmin devices" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sng-Rl-RqU">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="loadGarminDevicesButton:" target="8Yh-jj-dlv" id="s4z-yQ-mXs"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bf2-dt-GHe">
+                                        <rect key="frame" x="188" y="-7" width="189" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Open GPX file" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Trj-fW-hQF">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openGpxButton:" target="8Yh-jj-dlv" id="Zrb-Ec-OYV"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CDe-n4-FcT">
+                                        <rect key="frame" x="383" y="-7" width="189" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Delete GPX file" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zMA-Bw-FF8">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="deleteGpxButton:" target="8Yh-jj-dlv" id="QmD-Tj-Fh9"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Vj-Le-yn3">
+                                        <rect key="frame" x="578" y="-7" width="189" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Exit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IpQ-Vq-brh">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="exitButton:" target="8Yh-jj-dlv" id="acN-W4-dp1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="lAQ-VX-W0I">
-                                <rect key="frame" x="20" y="61" width="760" height="339"/>
+                                <rect key="frame" x="20" y="48" width="760" height="352"/>
                                 <connections>
                                     <segue destination="ztZ-Lr-83b" kind="embed" identifier="SplitView" id="TUc-WF-hAB"/>
                                 </connections>
                             </containerView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Vj-Le-yn3">
-                                <rect key="frame" x="529" y="13" width="257" height="32"/>
-                                <buttonCell key="cell" type="push" title="Exit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IpQ-Vq-brh">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="exitButton:" target="8Yh-jj-dlv" id="acN-W4-dp1"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="1Vj-Le-yn3" firstAttribute="leading" secondItem="Bf2-dt-GHe" secondAttribute="trailing" constant="12" symbolic="YES" id="5JF-gk-2Xn"/>
+                            <constraint firstItem="aeK-CS-k8t" firstAttribute="leading" secondItem="map-eu-B9B" secondAttribute="leading" constant="20" symbolic="YES" id="3y5-Sl-ci6"/>
                             <constraint firstItem="lAQ-VX-W0I" firstAttribute="top" secondItem="map-eu-B9B" secondAttribute="top" constant="20" symbolic="YES" id="80L-Ni-1GV"/>
-                            <constraint firstItem="usz-VC-IqK" firstAttribute="top" secondItem="lAQ-VX-W0I" secondAttribute="bottom" constant="20" symbolic="YES" id="8pJ-Tf-LrK"/>
-                            <constraint firstItem="Bf2-dt-GHe" firstAttribute="width" secondItem="1Vj-Le-yn3" secondAttribute="width" id="BSS-26-AlX"/>
-                            <constraint firstItem="Bf2-dt-GHe" firstAttribute="top" secondItem="lAQ-VX-W0I" secondAttribute="bottom" constant="20" symbolic="YES" id="Ebq-O3-CQA"/>
-                            <constraint firstItem="1Vj-Le-yn3" firstAttribute="top" secondItem="lAQ-VX-W0I" secondAttribute="bottom" constant="20" symbolic="YES" id="H7N-Zg-FPU"/>
+                            <constraint firstAttribute="trailing" secondItem="aeK-CS-k8t" secondAttribute="trailing" constant="20" symbolic="YES" id="H6D-Dh-iVQ"/>
+                            <constraint firstItem="aeK-CS-k8t" firstAttribute="top" secondItem="lAQ-VX-W0I" secondAttribute="bottom" constant="8" symbolic="YES" id="LfT-Lw-Qfn"/>
                             <constraint firstItem="lAQ-VX-W0I" firstAttribute="leading" secondItem="map-eu-B9B" secondAttribute="leading" constant="20" symbolic="YES" id="Tum-EM-zYm"/>
-                            <constraint firstAttribute="bottom" secondItem="usz-VC-IqK" secondAttribute="bottom" constant="20" symbolic="YES" id="Zuw-b7-F9m"/>
-                            <constraint firstAttribute="trailing" secondItem="1Vj-Le-yn3" secondAttribute="trailing" constant="20" symbolic="YES" id="aWW-9c-VBW"/>
-                            <constraint firstAttribute="bottom" secondItem="Bf2-dt-GHe" secondAttribute="bottom" constant="20" symbolic="YES" id="cXN-JY-rAh"/>
-                            <constraint firstItem="usz-VC-IqK" firstAttribute="leading" secondItem="map-eu-B9B" secondAttribute="leading" constant="20" symbolic="YES" id="hxN-KO-vbS"/>
-                            <constraint firstAttribute="bottom" secondItem="1Vj-Le-yn3" secondAttribute="bottom" constant="20" symbolic="YES" id="nkn-7d-Mfn"/>
-                            <constraint firstItem="Bf2-dt-GHe" firstAttribute="leading" secondItem="usz-VC-IqK" secondAttribute="trailing" constant="12" symbolic="YES" id="vRH-Sb-iBc"/>
+                            <constraint firstAttribute="bottom" secondItem="aeK-CS-k8t" secondAttribute="bottom" constant="20" symbolic="YES" id="gh2-5L-Meu"/>
                             <constraint firstAttribute="trailing" secondItem="lAQ-VX-W0I" secondAttribute="trailing" constant="20" symbolic="YES" id="w2x-p4-Me9"/>
-                            <constraint firstItem="usz-VC-IqK" firstAttribute="width" secondItem="Bf2-dt-GHe" secondAttribute="width" id="yEK-fi-Frj"/>
                         </constraints>
                     </view>
                 </viewController>

@@ -67,6 +67,12 @@ class MainViewController: NSViewController {
         }
     }
     
+    /// Forwards deletion request to Controller of the GpX-Outline-View
+    /// - Parameter sender: Button in storyboard
+    @IBAction func deleteGpxButton(_ sender: NSButton) {
+        gpxFilesVC?.deleteGpxFile()
+    }
+    
     /// Exits the application
     /// - Parameter sender: Button in storyboard
     @IBAction func exitButton(_ sender: NSButton) {

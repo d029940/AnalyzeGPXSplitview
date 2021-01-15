@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GarminGpxFiles{
+class GarminGpxFiles {
         
     /// Item of a tree node
     struct VolFileItem {
@@ -95,5 +95,45 @@ class GarminGpxFiles{
         }
         return errors
     }
+    
+    
+    /// Deletes given file
+    /// - Parameter file: Complete path of file
+    /// - Throws: errors from FileManager and Searching file in internal collection "allGpxFiles"
+    static func deleteGpxFile(path: URL) throws {
+        let fm = FileManager.default
+        
+        if !fm.fileExists(atPath: path.path) {
+            return
+        }
+        guard let attr = try? fm.attributesOfItem(atPath: path.path) as NSDictionary else { return }
+        guard let filetype = attr.fileType(), filetype == FileAttributeType.typeRegular.rawValue else {
+            return
+        }
+        
+        // Get index of volume / device
+        
+        let volIndex = allGpxFiles.firstIndex { (volFileItem) -> Bool in
+            return volFileItem.path == path.deletingLastPathComponent()
+        }
+        if volIndex == nil { return }
+        
+        // Now for the full path
+        let listOfGpxFiles = allGpxFiles[volIndex!].files
+    
+        let fileIndex = listOfGpxFiles.firstIndex { (volFileItem) -> Bool in
+            return volFileItem.name == path.lastPathComponent
+        }
+        if fileIndex == nil { return }
+        
+        // Delete file from internal collection "allGpxFiles"
+        allGpxFiles[volIndex!].files.remove(at: fileIndex!)
+        
+        // Delete file from file system
+        // TODO: FileManager delegate needed for asking to confirm deletion
+        try fm.removeItem(at: path)
+    }
 
 }
+
+

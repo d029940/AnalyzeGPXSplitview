@@ -12,12 +12,16 @@ class GpxFilesController: NSViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var listOfGpxFilesOutlineView: NSOutlineView!
-
+    
+    // MARK: - Properties stored for convenience
+    var gpxContentVC: GpxContentViewController?
+    
 
     // MARK: - Start up
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        guard let parentVC = self.parent?.parent as? MainViewController else { return }
+        gpxContentVC = parentVC.gpxContentVC
     }
     
     // MARK: - Methods
@@ -26,8 +30,7 @@ class GpxFilesController: NSViewController {
     func loadGarminDevices() {
         
         // First Clear all table views of the GpxContentViewController
-        guard let parentVC = self.parent?.parent as? MainViewController else { return }
-        guard let vc = parentVC.gpxContentVC else { return }
+        guard let vc = gpxContentVC else { return }
         vc.clearTables()
         
         // collect devices/volumes which have GPX files in folder /Garmin/GPX
@@ -54,6 +57,46 @@ class GpxFilesController: NSViewController {
         }
         
         listOfGpxFilesOutlineView.reloadData()
+    }
+    
+    
+    /// Forwards delete request to model and updates outline view
+    func deleteGpxFile(){
+        
+        // Check if anything is selected at all?
+        let index = listOfGpxFilesOutlineView.selectedRow
+        if (index == -1) {
+            return
+        }
+        // Forwad deletion to model
+        guard let item = listOfGpxFilesOutlineView.item(atRow: index) as? GarminGpxFiles.VolFileItem
+        else {
+            return
+        }
+        
+        let alert = NSAlert()
+        alert.addButton(withTitle: "Cancel")
+        alert.addButton(withTitle: "OK")
+        alert.messageText = "Do you really want to delete?"
+        let response = alert.runModal()
+        if response != NSApplication.ModalResponse.alertSecondButtonReturn {
+            // OK has not been pressed
+            return
+        }
+        
+        do {
+            try GarminGpxFiles.deleteGpxFile(path: item.path)
+        } catch let error as NSError {
+            let alert = NSAlert()
+            alert.informativeText = error.localizedDescription
+            alert.runModal()
+        }
+        
+        // Reload model (needs display)
+        listOfGpxFilesOutlineView.reloadData()
+        // Clear all table views of the GpxContentViewController
+        guard let vc = gpxContentVC else { return }
+        vc.clearTables()
     }
 
 }

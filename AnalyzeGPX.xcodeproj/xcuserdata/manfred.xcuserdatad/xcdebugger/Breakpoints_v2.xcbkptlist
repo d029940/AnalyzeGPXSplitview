@@ -64,7 +64,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
             endingLineNumber = "52"
-            landmarkName = "loadGarminDevices()"
+            landmarkName = "responds(to:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -80,15 +80,15 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
             endingLineNumber = "61"
-            landmarkName = "loadGarminDevices()"
-            landmarkType = "7">
+            landmarkName = "VolFileItem"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "263E420D-A816-4BC7-92EB-66EE783EAF24"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AnalyzeGPX/Model/GarminGpxFiles.swift"
@@ -96,7 +96,183 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
             endingLineNumber = "68"
+            landmarkName = "GarminGpxFiles"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2F6FBA13-9F4B-4343-BB86-539452B0DB7A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnalyzeGPX/Controllers/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "deleteGpxButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F0E953BF-7789-4F86-84BA-4FAF93559F1D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnalyzeGPX/Controllers/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "deleteGpxButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "473BCA79-CBDC-48A7-84C9-3234D6271E03"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnalyzeGPX/Model/GarminGpxFiles.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "loadGarminDevices()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "473BCA79-CBDC-48A7-84C9-3234D6271E03 - 8157033fc9210da4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static AnalyzeGPX.GarminGpxFiles.deleteGpxFile(path: Foundation.URL) throws -&gt; ()"
+                  moduleName = "AnalyzeGPX"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manfred/Developer/XCode/AnalyzeGPXSplitView/AnalyzeGPX/Model/GarminGpxFiles.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "2464">
+               </Location>
+               <Location
+                  uuid = "473BCA79-CBDC-48A7-84C9-3234D6271E03 - 9cc82b720bbf18c3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (AnalyzeGPX.GarminGpxFiles.VolFileItem) -&gt; Swift.Bool in static AnalyzeGPX.GarminGpxFiles.deleteGpxFile(path: Foundation.URL) throws -&gt; ()"
+                  moduleName = "AnalyzeGPX"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manfred/Developer/XCode/AnalyzeGPXSplitView/AnalyzeGPX/Model/GarminGpxFiles.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "148">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ED4B6CF5-4091-42F1-ABFB-2CE1DDDC1635"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnalyzeGPX/Model/GarminGpxFiles.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "loadGarminDevices()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "ED4B6CF5-4091-42F1-ABFB-2CE1DDDC1635 - 8157033fc9210a6e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static AnalyzeGPX.GarminGpxFiles.deleteGpxFile(path: Foundation.URL) throws -&gt; ()"
+                  moduleName = "AnalyzeGPX"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manfred/Developer/XCode/AnalyzeGPXSplitView/AnalyzeGPX/Model/GarminGpxFiles.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "126"
+                  endingLineNumber = "126"
+                  offsetFromSymbolStart = "3387">
+               </Location>
+               <Location
+                  uuid = "ED4B6CF5-4091-42F1-ABFB-2CE1DDDC1635 - b2d45efbb9d7b58e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (AnalyzeGPX.GarminGpxFiles.VolFileItem) -&gt; Swift.Bool in static AnalyzeGPX.GarminGpxFiles.deleteGpxFile(path: Foundation.URL) throws -&gt; ()"
+                  moduleName = "AnalyzeGPX"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manfred/Developer/XCode/AnalyzeGPXSplitView/AnalyzeGPX/Model/GarminGpxFiles.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "118">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5103A0DE-18CA-46A1-8B3D-B15D1FB3D995"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnalyzeGPX/Views/GpxFilesController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "deleteGpxFile()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C644E603-D090-4F5E-99BA-777BCB36662A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnalyzeGPX/Views/GpxFilesController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "deleteGpxFile()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2A0A00ED-6F9A-474C-AAAA-D75CE8A2FD0A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnalyzeGPX/Views/GpxFilesController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "outlineViewSelectionDidChange(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
