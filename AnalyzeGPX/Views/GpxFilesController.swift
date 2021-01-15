@@ -31,6 +31,8 @@ class GpxFilesController: NSViewController {
         vc.clearTables()
         
         // collect devices/volumes which have GPX files in folder /Garmin/GPX
+        // error domain: "NSCocoaErrorDomain" - code: 257 (NSFileReadNoPermissionError)
+        // at least for Time Machine Volume
         let errors = GarminGpxFiles.loadGarminDevices()
         if errors.count > 0 {
             var errMsg = ""
@@ -41,7 +43,7 @@ class GpxFilesController: NSViewController {
             let alert = NSAlert()
             alert.informativeText = errMsg
             alert.runModal()
-            return
+            // Go on - only print error messages, because there might be still gpx-files to show
         }
         var index = 0
         
