@@ -10,24 +10,24 @@ import Cocoa
 
 class GpxContentViewController: NSViewController {
 
-    // MARK:- Model
+    // MARK: - Model
     let garminGpx = GarminGpx()
     
-    // MARK:- Outlets
+    // MARK: - Outlets
     @IBOutlet weak var routesTableView: NSTableView!
     @IBOutlet weak var waypointsTableView: NSTableView!
     @IBOutlet weak var tracksTableView: NSTableView!
     
     @IBOutlet var tableMenu: NSMenu!
     
-    // MARK:- local variables
+    // MARK: - local variables
     
     // TDOD: Localize
     private var tracksColumnText: String = ""
     private var routesColumnText: String = ""
     private var waypointsColumnText: String = ""
     
-    // MARK:- Startup
+    // MARK: - Startup
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,15 +45,15 @@ class GpxContentViewController: NSViewController {
         waypointsTableView.delegate = self
         waypointsTableView.dataSource = self
     }
-    
+
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }
     }
-    
-    // MARK:- Methods
-    
+
+    // MARK: - Methods
+
     /// Fill the tracks, routes & waypoint tables from a GPX file
     /// - Parameter filename: GPX filename
     /// - Returns: true if gpx file is successfully parsed, false otherwise
@@ -93,7 +93,7 @@ class GpxContentViewController: NSViewController {
     }
 }
 
-// MARK:- Extensions for NSTableView
+// MARK: - Extensions for NSTableView
 
 extension GpxContentViewController: NSTableViewDataSource {
     
@@ -131,7 +131,7 @@ extension GpxContentViewController: NSTableViewDataSource {
     }
 }
 
-extension GpxContentViewController: NSTableViewDelegate  {
+extension GpxContentViewController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let element: String
@@ -154,5 +154,3 @@ extension GpxContentViewController: NSTableViewDelegate  {
         return cellView
     }
 }
-
-

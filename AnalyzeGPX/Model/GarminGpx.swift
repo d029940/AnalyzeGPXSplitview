@@ -10,7 +10,7 @@ import Foundation
 
 class GarminGpx: NSObject {
     
-    // MARK:- file and XML parsing properties
+    // MARK: - file and XML parsing properties
     
     var filename: URL?
     var parser: XMLParser?
@@ -18,7 +18,7 @@ class GarminGpx: NSObject {
         case badFilename
     }
     
-    // MARK:- GPX definitions
+    // MARK: - GPX definitions
     
     enum CurrentXmlTagEnum {
         case empty
@@ -35,7 +35,7 @@ class GarminGpx: NSObject {
     
     var currentXmlTag: CurrentXmlTagEnum = .empty
     
-    // MARK:- Model
+    // MARK: - Model
     
     var tracks: [String] = []
     var routes: [String] = []
@@ -45,7 +45,7 @@ class GarminGpx: NSObject {
     
     var buffer: String = ""
     
-    // MARK:- Init
+    // MARK: - Init
     override init() {
         super.init()
     }
@@ -56,7 +56,7 @@ class GarminGpx: NSObject {
         waypoints.removeAll()
     }
     
-    // MARK:- Parsing file
+    // MARK: - Parsing file
     
     func parse(gpxFile: URL) throws {
         self.filename = gpxFile
@@ -70,11 +70,11 @@ class GarminGpx: NSObject {
     }
 }
 
-// MARK:- XML Parser Delegates
+// MARK: - XML Parser Delegates
 
 extension GarminGpx: XMLParserDelegate {
   
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String: String] = [:]) {
 
         if elementName == "trk" {
             gpxType = .trk

@@ -16,7 +16,6 @@ class GpxFilesController: NSViewController {
     // MARK: - Properties stored for convenience
     var gpxContentVC: GpxContentViewController?
     
-
     // MARK: - Start up
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,13 +58,12 @@ class GpxFilesController: NSViewController {
         listOfGpxFilesOutlineView.reloadData()
     }
     
-    
     /// Forwards delete request to model and updates outline view
-    func deleteGpxFile(){
+    func deleteGpxFile() {
         
         // Check if anything is selected at all?
         let index = listOfGpxFilesOutlineView.selectedRow
-        if (index == -1) {
+        if index == -1 {
             return
         }
         // Forwad deletion to model
@@ -101,10 +99,10 @@ class GpxFilesController: NSViewController {
 
 }
 
-// MARK:- Extensions for NSOutlineView
+// MARK: - Extensions for NSOutlineView
 
 extension GpxFilesController: NSOutlineViewDataSource {
-    
+
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         if item == nil {
             // Top level: list volumes (devices)
@@ -118,10 +116,12 @@ extension GpxFilesController: NSOutlineViewDataSource {
         if item == nil {
             return GarminGpxFiles.allGpxFiles[index]
         } else {
+            // swiftlint:disable force_cast
             return (item as! GarminGpxFiles.VolFileItem).files[index]
+            // swiftlint:enable force_cast
         }
     }
-    
+
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
         guard let item = item as? GarminGpxFiles.VolFileItem else {
             return false
@@ -132,7 +132,6 @@ extension GpxFilesController: NSOutlineViewDataSource {
 
 extension GpxFilesController: NSOutlineViewDelegate {
     
-            
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         var view: NSTableCellView?
 

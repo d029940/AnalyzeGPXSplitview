@@ -16,7 +16,6 @@ class MainViewController: NSViewController {
     var gpxFilesVC: GpxFilesController?
     var gpxContentVC: GpxContentViewController?
 
-    
     // MARK: Start up
     
     override func viewDidLoad() {
@@ -36,7 +35,7 @@ class MainViewController: NSViewController {
         }
     }
     
-    // MARK:- Actions
+    // MARK: - Actions
     
     /// Search GPX files in /Garmin/GPX places of attached volumes and shows them in the splitview
     /// - Parameter sender: Button in storyboard

@@ -26,8 +26,8 @@ class GarminGpxFiles {
     static func listGpxFiles(for item: inout VolFileItem) {
         item.files.removeAll()
         
-        let fm = FileManager.default
-        guard let gpxFiles = try? fm.contentsOfDirectory(at: item.path,
+        let fileManager = FileManager.default
+        guard let gpxFiles = try? fileManager.contentsOfDirectory(at: item.path,
                                                          includingPropertiesForKeys: [.isRegularFileKey],
                                                          options: [.skipsHiddenFiles])
             else { return }
@@ -48,8 +48,10 @@ class GarminGpxFiles {
         allGpxFiles.removeAll()
         errors.removeAll()
         
-        let fm = FileManager.default
-        guard let listOfVol = fm.mountedVolumeURLs(includingResourceValuesForKeys: [.volumeLocalizedNameKey], options: [.skipHiddenVolumes]) else { return errors }
+        let fileManager = FileManager.default
+        guard let listOfVol =
+                fileManager.mountedVolumeURLs(includingResourceValuesForKeys: [.volumeLocalizedNameKey], options: [.skipHiddenVolumes])
+        else { return errors }
 
         // Search all mounted volumes
         for url in listOfVol {
@@ -61,7 +63,7 @@ class GarminGpxFiles {
             var topLevelDirs = [URL]()
             do {
                 try
-                topLevelDirs = fm.contentsOfDirectory(at: url,
+                topLevelDirs = fileManager.contentsOfDirectory(at: url,
                                                       includingPropertiesForKeys: [.isDirectoryKey],
                                                       options: [.skipsHiddenFiles])
             } catch let error as NSError {
@@ -79,7 +81,7 @@ class GarminGpxFiles {
             
             // Find GPX folder in Garmin folder
             for garmin in garminVolumes {
-                guard let gpxFolders = try? fm.contentsOfDirectory(at: garmin,
+                guard let gpxFolders = try? fileManager.contentsOfDirectory(at: garmin,
                 includingPropertiesForKeys: [.isDirectoryKey],
                 options: [.skipsHiddenFiles]) else {
                     continue
@@ -96,17 +98,16 @@ class GarminGpxFiles {
         return errors
     }
     
-    
     /// Deletes given file
     /// - Parameter file: Complete path of file
     /// - Throws: errors from FileManager and Searching file in internal collection "allGpxFiles"
     static func deleteGpxFile(path: URL) throws {
-        let fm = FileManager.default
+        let fileManger = FileManager.default
         
-        if !fm.fileExists(atPath: path.path) {
+        if !fileManger.fileExists(atPath: path.path) {
             return
         }
-        guard let attr = try? fm.attributesOfItem(atPath: path.path) as NSDictionary else { return }
+        guard let attr = try? fileManger.attributesOfItem(atPath: path.path) as NSDictionary else { return }
         guard let filetype = attr.fileType(), filetype == FileAttributeType.typeRegular.rawValue else {
             return
         }
@@ -130,10 +131,7 @@ class GarminGpxFiles {
         allGpxFiles[volIndex!].files.remove(at: fileIndex!)
         
         // Delete file from file system
-        // TODO: FileManager delegate needed for asking to confirm deletion
-        try fm.removeItem(at: path)
+        try fileManger.removeItem(at: path)
     }
 
 }
-
-
