@@ -5,12 +5,19 @@
 //  Created by Manfred on 01.02.20.
 //  Copyright © 2020 Manfred Kern. All rights reserved.
 //
+// Layout of file structure
+//      Volume
+//          -> "Garmin"
+//                  -> "Activities"
+//                  -> "Courses"
+//                  -> "GPX"
+//
 
 import Foundation
 
 class GarminGpxFiles {
         
-    /// Item of a tree node
+    /// Item of a tree node for GPX files
     struct VolFileItem {
         var name: String   // Name of volume or file
         var path: URL      // full path
@@ -18,6 +25,7 @@ class GarminGpxFiles {
     }
     typealias AllGpxFiles = [VolFileItem]
     static var allGpxFiles = [VolFileItem]()
+    static var allCourseFiles = [VolFileItem]()
     
     // MARK: - Methods
     
@@ -39,6 +47,24 @@ class GarminGpxFiles {
         }
     }
     
+    /// List all FIT files for a given item and add them to its files property
+    /// - Parameter item: to look for FIT files and return them in the files property
+    static func listFitFiles(for item: inout VolFileItem) {
+        item.files.removeAll()
+        
+        let fileManager = FileManager.default
+        guard let fitFiles = try? fileManager.contentsOfDirectory(at: item.path,
+                                                                  includingPropertiesForKeys: [.isRegularFileKey],
+                                                                  options: [.skipsHiddenFiles])
+        else { return }
+        
+        for file in fitFiles.filter({ ($0.pathExtension).lowercased() == "fit"}) {
+            item.files.append(VolFileItem(name: file.lastPathComponent,
+                                          path: file,
+                                          files: []))
+        }
+    }
+
     /// Searches for "Garmin/GPX" folder on all mounted volumes case-insensitively and add them to property "allGpxFiles"
     /// - seealso:: allGpxFiles
     /// - returns: A list of errors occur during reading the directories
@@ -46,6 +72,7 @@ class GarminGpxFiles {
     static func loadGarminDevices() -> [NSError] {
         var errors = [NSError]()
         allGpxFiles.removeAll()
+        allCourseFiles.removeAll()
         errors.removeAll()
         
         let fileManager = FileManager.default
@@ -72,25 +99,28 @@ class GarminGpxFiles {
             }
             
             var garminVolumes = [URL]()
-            for dir in topLevelDirs {
-                if dir.lastPathComponent.lowercased() == "garmin" {
-                    garminVolumes.append(dir)
-                }
+            for dir in topLevelDirs where dir.lastPathComponent.lowercased() == "garmin" {
+                garminVolumes.append(dir)
             }
             if garminVolumes.isEmpty { continue }
             
             // Find GPX folder in Garmin folder
             for garmin in garminVolumes {
-                guard let gpxFolders = try? fileManager.contentsOfDirectory(at: garmin,
+                guard let garminFolders = try? fileManager.contentsOfDirectory(at: garmin,
                 includingPropertiesForKeys: [.isDirectoryKey],
                 options: [.skipsHiddenFiles]) else {
                     continue
                 }
-                // Is there a GPX folder
-                for dir in gpxFolders {
+                for dir in garminFolders {
+                    // Is there a GPX folder
                     if dir.lastPathComponent.lowercased() == "gpx" {
                         let volFileItem = VolFileItem(name: name, path: dir, files: [])
                         self.allGpxFiles.append(volFileItem)
+                    }
+                    // Is there a Courses folder
+                    if dir.lastPathComponent.lowercased() == "courses" {
+                        let volFileItem = VolFileItem(name: name, path: dir, files: [])
+                        self.allCourseFiles.append(volFileItem)
                     }
                 }
             }

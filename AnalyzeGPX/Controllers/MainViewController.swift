@@ -62,7 +62,7 @@ class MainViewController: NSViewController {
             }
             guard let vc = gpxContentVC
                 else { return }
-            vc.fillTables(with: filename)
+            vc.fillGpxTables(with: filename)
         }
     }
     

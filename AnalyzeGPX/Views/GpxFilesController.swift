@@ -30,7 +30,7 @@ class GpxFilesController: NSViewController {
         
         // First Clear all table views of the GpxContentViewController
         guard let vc = gpxContentVC else { return }
-        vc.clearTables()
+        vc.clearGpxTables()
         
         // collect devices/volumes which have GPX files in folder /Garmin/GPX
         // error domain: "NSCocoaErrorDomain" - code: 257 (NSFileReadNoPermissionError)
@@ -47,11 +47,17 @@ class GpxFilesController: NSViewController {
             alert.runModal()
             // Go on - only print error messages, because there might be still gpx-files to show
         }
-        var index = 0
         
         // read GPX files for each volume/device
+        var index = 0
         while index < GarminGpxFiles.allGpxFiles.count {
             GarminGpxFiles.listGpxFiles(for: &GarminGpxFiles.allGpxFiles[index])
+            index+=1
+        }
+        // read FIT files for each volume/device
+        index = 0
+        while index < GarminGpxFiles.allCourseFiles.count {
+            GarminGpxFiles.listFitFiles(for: &GarminGpxFiles.allCourseFiles[index])
             index+=1
         }
         
@@ -94,7 +100,7 @@ class GpxFilesController: NSViewController {
         listOfGpxFilesOutlineView.reloadData()
         // Clear all table views of the GpxContentViewController
         guard let vc = gpxContentVC else { return }
-        vc.clearTables()
+        vc.clearGpxTables()
     }
 
 }
@@ -164,16 +170,19 @@ extension GpxFilesController: NSOutlineViewDelegate {
             return
         }
         
-        let item = outlineView.item(atRow: outlineView.selectedRow)
-        if outlineView.isExpandable(item) {
-            outlineView.expandItem(item)
-        }
-        
-        guard let volFileItem = item as? GarminGpxFiles.VolFileItem  else { return }
-        
         // --> Splitview Controller --> Mainview Controller
         guard let parentVC = self.parent?.parent as? MainViewController else { return }
         guard let vc = parentVC.gpxContentVC else { return }
-        vc.fillTables(with: volFileItem.path)
+        
+        let item = outlineView.item(atRow: outlineView.selectedRow)
+        guard let volFileItem = item as? GarminGpxFiles.VolFileItem  else { return }
+        
+        if outlineView.isExpandable(item) {
+            outlineView.expandItem(item)
+            // TODO: read courses, populate table and refresh
+            vc.fillFitTables(with: volFileItem.path)
+        } else {
+            vc.fillGpxTables(with: volFileItem.path)
+        }
     }
 }

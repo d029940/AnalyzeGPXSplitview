@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6313C11123F0BA2E0016A529 /* MainSplitView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6313C10F23F0BA2E0016A529 /* MainSplitView.storyboard */; };
+		6353803627E8963200B0242F /* GarminFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353803527E8963200B0242F /* GarminFit.swift */; };
 		639C1D4023E5CCCB00199066 /* GarminGpxFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C1D3F23E5CCCB00199066 /* GarminGpxFiles.swift */; };
 		639E839C23C511E70048666A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E839B23C511E70048666A /* AppDelegate.swift */; };
 		639E839E23C511E70048666A /* GpxContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E839D23C511E70048666A /* GpxContentViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		6313C11023F0BA2E0016A529 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainSplitView.storyboard; sourceTree = "<group>"; };
+		6353803527E8963200B0242F /* GarminFit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarminFit.swift; sourceTree = "<group>"; };
 		639C1D3F23E5CCCB00199066 /* GarminGpxFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarminGpxFiles.swift; sourceTree = "<group>"; };
 		639E839823C511E70048666A /* AnalyzeGPX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnalyzeGPX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		639E839B23C511E70048666A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				639E83AB23C512600048666A /* GarminGpx.swift */,
+				6353803527E8963200B0242F /* GarminFit.swift */,
 				639C1D3F23E5CCCB00199066 /* GarminGpxFiles.swift */,
 			);
 			path = Model;
@@ -206,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6353803627E8963200B0242F /* GarminFit.swift in Sources */,
 				639C1D4023E5CCCB00199066 /* GarminGpxFiles.swift in Sources */,
 				639E839E23C511E70048666A /* GpxContentViewController.swift in Sources */,
 				639E83AC23C512600048666A /* GarminGpx.swift in Sources */,
@@ -367,7 +371,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = private.AnalyzeGPX;
+				PRODUCT_BUNDLE_IDENTIFIER = com.manfredkern.AnalyzeGPX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -388,7 +392,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = private.AnalyzeGPX;
+				PRODUCT_BUNDLE_IDENTIFIER = com.manfredkern.AnalyzeGPX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};

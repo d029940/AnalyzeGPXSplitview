@@ -12,11 +12,13 @@ class GpxContentViewController: NSViewController {
 
     // MARK: - Model
     let garminGpx = GarminGpx()
+    let garminFit = GarminFit()
     
     // MARK: - Outlets
     @IBOutlet weak var routesTableView: NSTableView!
     @IBOutlet weak var waypointsTableView: NSTableView!
     @IBOutlet weak var tracksTableView: NSTableView!
+    @IBOutlet weak var coursesTableView: NSTableView!
     
     @IBOutlet var tableMenu: NSMenu!
     
@@ -26,6 +28,7 @@ class GpxContentViewController: NSViewController {
     private var tracksColumnText: String = ""
     private var routesColumnText: String = ""
     private var waypointsColumnText: String = ""
+    private var coursesColumnText: String = ""
     
     // MARK: - Startup
     override func viewDidLoad() {
@@ -36,6 +39,7 @@ class GpxContentViewController: NSViewController {
         tracksColumnText = tracksTableView.tableColumns[0].title
         routesColumnText = routesTableView.tableColumns[0].title
         waypointsColumnText = waypointsTableView.tableColumns[0].title
+        coursesColumnText = coursesTableView.tableColumns[0].title
         
         // Connect delegates to tableview
         tracksTableView.delegate = self
@@ -44,6 +48,8 @@ class GpxContentViewController: NSViewController {
         routesTableView.dataSource = self
         waypointsTableView.delegate = self
         waypointsTableView.dataSource = self
+        coursesTableView.delegate = self
+        coursesTableView.dataSource = self
     }
 
     override var representedObject: Any? {
@@ -58,7 +64,7 @@ class GpxContentViewController: NSViewController {
     /// - Parameter filename: GPX filename
     /// - Returns: true if gpx file is successfully parsed, false otherwise
     @discardableResult
-    func fillTables(with filename: URL) -> Bool {
+    func fillGpxTables(with filename: URL) -> Bool {
         
         // clear current table view contents
         garminGpx.resetModel()
@@ -74,22 +80,43 @@ class GpxContentViewController: NSViewController {
             print("Unknown error")
             return false
         }
-
-        refreshView()
+        
+        refreshGpxViews()
+        return true
+    }
+    
+    @discardableResult
+    func fillFitTables(with filename: URL) -> Bool {
+        
+        // clear current table view contents
+        garminFit.resetModel()
+        garminFit.add(fitFile: filename)
+        refreshFitViews()
         return true
     }
     
     /// Reset the model (data) of the current GPX and refresh the table views for tracks, routes 6 waypoints
-    func clearTables() {
+    func clearGpxTables() {
         garminGpx.resetModel()
-        refreshView()
+        refreshGpxViews()
+    }
+    
+    /// Reset the model (data) of the current courses and refresh the table views for courses
+    func clearFitTables() {
+        garminFit.resetModel()
+        refreshGpxViews()
     }
     
     /// Refresh the table views for tracks, routes 6 waypoints
-    func refreshView() {
+    func refreshGpxViews() {
         tracksTableView.reloadData()
         routesTableView.reloadData()
         waypointsTableView.reloadData()
+    }
+    
+    /// Refresh the table views for courses
+    func refreshFitViews() {
+        coursesTableView.reloadData()
     }
 }
 
@@ -127,6 +154,15 @@ extension GpxContentViewController: NSTableViewDataSource {
             }
             return count
         }
+        if tableView == coursesTableView {
+            let count = garminFit.courses.count
+            if count == 0 {
+                column.title = coursesColumnText
+            } else {
+                column.title = "\(coursesColumnText) (\(count))"
+            }
+            return count
+        }
         return 0
     }
 }
@@ -141,6 +177,8 @@ extension GpxContentViewController: NSTableViewDelegate {
             element = garminGpx.routes[row]
         } else if tableView == waypointsTableView {
             element = garminGpx.waypoints[row]
+        } else if tableView == coursesTableView {
+            element = garminFit.courses[row]
         } else {
             return nil
         }
