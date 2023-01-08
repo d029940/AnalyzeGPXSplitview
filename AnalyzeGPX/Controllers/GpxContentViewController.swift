@@ -39,7 +39,7 @@ class GpxContentViewController: NSViewController {
         tracksColumnText = tracksTableView.tableColumns[0].title
         routesColumnText = routesTableView.tableColumns[0].title
         waypointsColumnText = waypointsTableView.tableColumns[0].title
-        coursesColumnText = coursesTableView.tableColumns[0].title
+//        coursesColumnText = coursesTableView.tableColumns[0].title
         
         // Connect delegates to tableview
         tracksTableView.delegate = self
@@ -48,8 +48,8 @@ class GpxContentViewController: NSViewController {
         routesTableView.dataSource = self
         waypointsTableView.delegate = self
         waypointsTableView.dataSource = self
-        coursesTableView.delegate = self
-        coursesTableView.dataSource = self
+//        coursesTableView.delegate = self
+//        coursesTableView.dataSource = self
     }
 
     override var representedObject: Any? {
